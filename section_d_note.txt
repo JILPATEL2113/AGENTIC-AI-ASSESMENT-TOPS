@@ -1,0 +1,15 @@
+SECTION D - STEP 2: TEST & DEBUG NOTE (3-4 lines)
+===================================================
+
+Bug found: lookup_order_status() and check_refund_eligibility() used direct dict
+indexing (orders[order_id]), which raised an unhandled KeyError and crashed the
+whole program when a customer gave an invalid/unknown order ID -- exactly the
+"not found" case the assignment asked to be handled gracefully.
+
+Fix applied: Replaced dict[key] with dict.get(key, default) so a missing order_id
+returns "not_found"/"unknown" instead of raising an exception. I also updated
+react_agent() so that when Cycle 1's observation is "not_found", the Cycle 2
+reasoning step branches accordingly (asks the user to verify the order ID and
+skips the refund check) instead of blindly calling check_refund_eligibility() on
+an order that doesn't exist -- this is the "incorporate the observation into the
+next reasoning step" requirement that the AI's original version ignored.

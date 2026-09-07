@@ -1,0 +1,12 @@
+SECTION D - STEP 1: EXACT PROMPT GIVEN TO THE AI TOOL
+=======================================================
+
+AI Tool used: Claude
+
+Prompt:
+"Write a Python program that implements a simplified ReAct (Reason + Action) loop for a
+food delivery customer support agent that processes a user complaint query. It should run
+at least two Reason-Action-Observation cycles, print each cycle's thought/action/observation,
+call at least two tool functions (lookup_order_status(order_id) and
+check_refund_eligibility(order_id)), and handle the case where a tool returns an error or
+'not found' result without crashing."
